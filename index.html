@@ -17,7 +17,7 @@
     <!-- HEADER -->
     <header>
         <h1 id="clonewars-quote"></h1>
-        <p class="subtitle">Wish I could be a fish!</p>
+        <p class="subtitle"></p>
     </header>
 
     <!-- DROPDOWN SECTION -->
@@ -31,13 +31,6 @@
             <option value="downloads/custom-mod.html">Custom Mod</option>
         </select>
     </section>
-
-    <!-- FIXED LEGO ICON -->
-    <div class="floating-icon">
-        <a href="https://www.youtube.com/@Just.Penguino" target="_blank">
-            <img src="images/Cool Lego.gif" width="120" height="120" alt="Lego characters">
-        </a>
-    </div>
 
     <!-- MAIN CONTENT SLIDESHOW -->
     <main class="gallery">
@@ -84,12 +77,13 @@
     </main>
 
     <!-- SOCIAL LINKS -->
-    <footer class="social-section">
+    <footer id="socials" class="social-section">
         <h2>Find Me Online</h2>
-        <p class="social-text">Swap these links for your own YouTube, Discord, and Steam pages.</p>
+        <p class="social-text">Links & Other Bits of Garbage</p>
         <p class="contact-line">📱 <a href="tel:2562221875">Call or text me if you wanna I guess: 256-222-1875</a></p>
 
-        <div class="social-links">
+        <div class="social-links-wrap">
+            <div class="social-links">
             <a class="social-link youtube" href="https://www.youtube.com/@Just.Penguino" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M21.8 7.2a2.8 2.8 0 0 0-2-2C18 4.7 12 4.7 12 4.7s-6 0-7.8.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1.8 12a29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.8.5 7.8.5 7.8.5s6 0 7.8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-4.8 29 29 0 0 0-.4-4.8ZM10 15.5V8.5l6 3.5-6 3.5Z" />
@@ -125,9 +119,23 @@
                 <span>Twitch</span>
                 <span class="hover-note">ngl twitch sucks but im leaving it here just incase</span>
             </a>
+
+            <a class="social-link obs" href="https://youtube.com/playlist?list=PLywA9zGEsCMaG5pjTf7bqszV8tAzIcKYC&si=WzvpXAfSTzkT_8cn" aria-label="OBS">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2a10 10 0 0 0-8.2 4.2l1.7.9a4.6 4.6 0 0 1 4.5-1.5c1.4.4 2.5 1.3 3.1 2.6a10 10 0 0 0-1.1-6.2Zm7.7 6.2a10 10 0 0 1-1.9 11.7l-.7-1.8a4.6 4.6 0 0 1-3.3-3.4c-.3-1.4 0-2.8.8-3.9a10 10 0 0 0 5.1-2.6ZM6.2 19.8A10 10 0 0 1 2 12c0-.8.1-1.5.2-2.2l1.7.9a4.6 4.6 0 0 1 2.4 4.1c0 1.4-.6 2.7-1.6 3.6a10 10 0 0 0 3.9 1.4Zm5.8-7.2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
+                </svg>
+                <span>OBS</span>
+            </a>
+        </div>
+
+        <div class="floating-icon">
+            <a href="hall-of-fame.html" aria-label="Open Hall Of Fame">
+                <img src="images/Cool Lego.gif" width="120" height="120" alt="Hall Of Fame link">
+            </a>
+        </div>
         </div>
     </footer>
-
+    <script src="js/site-search.js"></script>
     <script src="js/clonewars.js"></script>
 </body>
 </html>

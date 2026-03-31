@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jumpscare</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="download-page jumpscare-page">
+    <main class="download-card jumpscare-card">
+        <div class="jumpscare-frame" aria-label="Jumpscare image">
+            <img src="images/Jumpscare.png" alt="Jumpscare image">
+        </div>
+
+        <div class="download-actions">
+            <a class="download-button secondary" href="index.html">Back to Homepage</a>
+        </div>
+    </main>
+
+    <audio id="jumpscare-audio" src="mp3/Jumpscare Sound.m4a" preload="auto" autoplay></audio>
+
+    <script>
+        const jumpscareAudio = document.getElementById("jumpscare-audio");
+
+        const stopJumpscareAudio = () => {
+            if (!jumpscareAudio) {
+                return;
+            }
+
+            jumpscareAudio.pause();
+            jumpscareAudio.currentTime = 0;
+        };
+
+        window.addEventListener("DOMContentLoaded", () => {
+            jumpscareAudio.play().catch(() => {
+                /* ignore autoplay restrictions */
+            });
+        });
+
+        window.addEventListener("pagehide", stopJumpscareAudio);
+        window.addEventListener("beforeunload", stopJumpscareAudio);
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                stopJumpscareAudio();
+            }
+        });
+    </script>
+    <script src="js/site-search.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hall Of Fame</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/FinCharacter pointing a (Custom).png">
+</head>
+<body class="hall-page">
+    <main class="hall-wrapper">
+        <h1>Hall Of Fame</h1>
+        <p class="download-description">A Place To Honor the Best of What Discord Has To Offer.</p>
+
+        <div class="download-actions">
+            <a class="download-button secondary" href="index.html">Back to Home</a>
+        </div>
+
+        <section id="hall-grid" class="hall-grid" aria-label="Hall Of Fame image gallery"></section>
+    </main>
+
+    <script src="js/site-search.js"></script>
+    <script>
+        const hallImages = [
+            "1129534514771791993.png",
+            "1181256448601247745.png",
+            "1337201053770186852.png",
+            "1364458778136940574(2).png",
+            "1364458778136940574.png",
+            "1391199871582736387.png",
+            "1392344544435109929.png",
+            "1412178363174490204.png",
+            "1461666243378679838.png",
+            "1464403181416222828.png",
+            "1468041893836493084.png",
+            "1485811401254764607 vaginal yeast tastes better than other bread.png",
+            "206836832346963969.png",
+            "335289119339053058.png",
+            "604557709123256341.png",
+            "614326447850651649.png",
+            "619285014860791830.png",
+            "670370286146945066.png",
+            "743220397339705447.png",
+            "823934971864678451.png",
+            "844589359075295233.png",
+            "884386663458041876.png",
+            "987053655125553253.png",
+            "ApplicationFrameHost_aqm7xRvWoZ.png",
+            "explorer_6ZfLEDy38C.png",
+            "explorer_taDqQ1ZNvQ.png",
+            "explorer_TMhOHYHJTE.png",
+            "explorer_Z9DdO6TgaB.png",
+            "Screenshot 2024-08-05 034826.png",
+            "Screenshot 2024-08-05 034900.png",
+            "Screenshot 2024-08-28 123545.png",
+            "Screenshot 2024-08-30 052653.png",
+            "Screenshot 2024-09-11 173042.png",
+            "Screenshot 2024-09-14 140758.png",
+            "Screenshot 2024-10-18 095745.png",
+            "Screenshot 2025-02-05 075538.png",
+            "Screenshot 2025-02-10 130736.png",
+            "Screenshot 2025-02-10 130905.png",
+            "Screenshot 2025-02-10 130950.png",
+            "Screenshot 2025-02-10 131032.png",
+            "Screenshot 2025-08-04 065348.png",
+            "Screenshot 2025-09-02 185226.png",
+            "VoiceAccess_soJmwHgeIV.png"
+        ];
+
+        const hallGrid = document.getElementById("hall-grid");
+
+        hallImages.forEach((file, index) => {
+            const imagePath = encodeURI(`images/DiscordHallOfFame/${file}`);
+            const link = document.createElement("a");
+            link.className = "hall-item";
+            link.href = `hall-image.html?img=${encodeURIComponent(file)}`;
+            link.innerHTML = `<img src="${imagePath}" alt="Hall of Fame image ${index + 1}" loading="lazy">`;
+            hallGrid.appendChild(link);
+        });
+    </script>
+</body>
+</html>

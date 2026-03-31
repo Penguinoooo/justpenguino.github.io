@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hall Of Fame Image</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/FinCharacter pointing a (Custom).png">
+</head>
+<body class="hall-page hall-image-page">
+    <main class="hall-wrapper hall-detail-card">
+        <h1>Hall Of Fame</h1>
+        <p class="download-description">A closer look at one Hall Of Fame entry.</p>
+
+        <div class="download-actions">
+            <a class="download-button secondary" href="hall-of-fame.html">Back to Gallery</a>
+            <a id="open-full-image" class="download-button" href="#" target="_blank" rel="noopener noreferrer">Open Full Image</a>
+        </div>
+
+        <section class="hall-image-view" aria-label="Selected Hall Of Fame image">
+            <img id="hall-image" src="" alt="Selected Hall Of Fame image">
+        </section>
+
+        <section class="instructions-section comment-section" aria-label="Comments">
+            <h2>Comments</h2>
+            <form id="comment-form" class="comment-form">
+                <input id="comment-input" class="comment-input" type="text" maxlength="50" placeholder="Leave a quick comment (50 max)" required>
+                <button class="download-button" type="submit">Post</button>
+            </form>
+            <p class="comment-helper"><span id="comment-count">0</span>/50 characters</p>
+            <ul id="comment-list" class="comment-list"></ul>
+        </section>
+    </main>
+
+    <script src="js/site-search.js"></script>
+    <script>
+        const allowedImages = [
+            "1129534514771791993.png",
+            "1181256448601247745.png",
+            "1337201053770186852.png",
+            "1364458778136940574(2).png",
+            "1364458778136940574.png",
+            "1391199871582736387.png",
+            "1392344544435109929.png",
+            "1412178363174490204.png",
+            "1461666243378679838.png",
+            "1464403181416222828.png",
+            "1468041893836493084.png",
+            "1485811401254764607 vaginal yeast tastes better than other bread.png",
+            "206836832346963969.png",
+            "335289119339053058.png",
+            "604557709123256341.png",
+            "614326447850651649.png",
+            "619285014860791830.png",
+            "670370286146945066.png",
+            "743220397339705447.png",
+            "823934971864678451.png",
+            "844589359075295233.png",
+            "884386663458041876.png",
+            "987053655125553253.png",
+            "ApplicationFrameHost_aqm7xRvWoZ.png",
+            "explorer_6ZfLEDy38C.png",
+            "explorer_taDqQ1ZNvQ.png",
+            "explorer_TMhOHYHJTE.png",
+            "explorer_Z9DdO6TgaB.png",
+            "Screenshot 2024-08-05 034826.png",
+            "Screenshot 2024-08-05 034900.png",
+            "Screenshot 2024-08-28 123545.png",
+            "Screenshot 2024-08-29 050131.png",
+            "Screenshot 2024-08-30 052653.png",
+            "Screenshot 2024-09-11 173042.png",
+            "Screenshot 2024-09-14 140758.png",
+            "Screenshot 2024-10-18 095745.png",
+            "Screenshot 2025-02-05 075538.png",
+            "Screenshot 2025-02-10 130736.png",
+            "Screenshot 2025-02-10 130905.png",
+            "Screenshot 2025-02-10 130950.png",
+            "Screenshot 2025-02-10 131032.png",
+            "Screenshot 2025-08-04 065348.png",
+            "Screenshot 2025-09-02 185226.png",
+            "VoiceAccess_soJmwHgeIV.png"
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        const selectedImage = params.get("img");
+        const imageElement = document.getElementById("hall-image");
+        const fullImageLink = document.getElementById("open-full-image");
+        const commentForm = document.getElementById("comment-form");
+        const commentInput = document.getElementById("comment-input");
+        const commentCount = document.getElementById("comment-count");
+        const commentList = document.getElementById("comment-list");
+
+        function renderComments(storageKey) {
+            const comments = JSON.parse(localStorage.getItem(storageKey) || "[]");
+            commentList.innerHTML = "";
+
+            if (!comments.length) {
+                const emptyItem = document.createElement("li");
+                emptyItem.className = "empty-comment";
+                emptyItem.textContent = "No comments yet.";
+                commentList.appendChild(emptyItem);
+                return;
+            }
+
+            comments.forEach((comment) => {
+                const item = document.createElement("li");
+                item.className = "comment-item";
+                item.textContent = comment;
+                commentList.appendChild(item);
+            });
+        }
+
+        if (!selectedImage || !allowedImages.includes(selectedImage)) {
+            imageElement.alt = "Hall Of Fame image not found";
+            imageElement.removeAttribute("src");
+            fullImageLink.href = "hall-of-fame.html";
+            fullImageLink.textContent = "Back to Gallery";
+            commentForm.style.display = "none";
+            commentList.innerHTML = '<li class="empty-comment">That image could not be found.</li>';
+        } else {
+            const imagePath = encodeURI(`images/DiscordHallOfFame/${selectedImage}`);
+            const storageKey = `hall-comments:${selectedImage}`;
+
+            imageElement.src = imagePath;
+            fullImageLink.href = imagePath;
+            renderComments(storageKey);
+
+            commentInput.addEventListener("input", () => {
+                commentCount.textContent = String(commentInput.value.length);
+            });
+
+            commentForm.addEventListener("submit", (event) => {
+                event.preventDefault();
+                const newComment = commentInput.value.trim().slice(0, 50);
+
+                if (!newComment) {
+                    return;
+                }
+
+                const comments = JSON.parse(localStorage.getItem(storageKey) || "[]");
+                comments.unshift(newComment);
+                localStorage.setItem(storageKey, JSON.stringify(comments.slice(0, 20)));
+
+                commentInput.value = "";
+                commentCount.textContent = "0";
+                renderComments(storageKey);
+            });
+        }
+    </script>
+</body>
+</html>
